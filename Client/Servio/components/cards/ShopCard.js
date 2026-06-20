@@ -43,6 +43,7 @@ function ShopCard({
   mini,
   serviceData,
   activeTab,
+  distance,
 }) {
   const { theme } = useTheme();
   const styles = useThemedStyles(getStyles);
@@ -75,6 +76,11 @@ function ShopCard({
     onAction(type, id);
   };
 
+  const formatedDistance = (distance) => {
+    if (distance > 1) return `${distance.toFixed(1)} km`;
+    else return `${(distance * 1000).toFixed()} m`;
+  };
+
   return (
     <CardComp style={styles.container} onPress={onCardPress}>
       <View style={styles.imageCont}>
@@ -105,9 +111,13 @@ function ShopCard({
           <RowCont style={{ justifyContent: "space-between" }}>
             <GapContainer gap={5} flex>
               <MText>{capFirstLetter(name)}</MText>
-              <SText thin color={"sec_text"} >
+              <SText thin color={"sec_text"}>
                 {description}
               </SText>
+              {distance && (
+                <TText>{formatedDistance(distance * 1.4)} away</TText>
+                // multiply by 1.4 for road factor
+              )}
             </GapContainer>
             {isShopOwner && (
               <Feather

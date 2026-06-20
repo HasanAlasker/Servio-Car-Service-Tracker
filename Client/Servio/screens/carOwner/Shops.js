@@ -78,6 +78,7 @@ function Shops(props) {
           ratingCount={shop.ratingCount}
           services={shop.services}
           serviceData={params}
+          distance={shop.distance}
         />
       ))
     ) : (
