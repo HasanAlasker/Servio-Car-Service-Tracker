@@ -54,6 +54,8 @@
     "react-native-svg": "15.12.1",
     "react-native-toast-notifications": "^3.4.0",
     "react-native-web": "^0.21.0",
+    "react-native-worklets": "^0.5.1",
+    "react-native-worklets-core": "^1.6.3",
     "yup": "^1.7.1",
     "zustand": "^5.0.12"
   },
