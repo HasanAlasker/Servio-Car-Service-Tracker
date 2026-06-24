@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native/jest/mockComponent.js b/node_modules/react-native/jest/mockComponent.js
+index 6ff4f6b..38f7610 100644
+--- a/node_modules/react-native/jest/mockComponent.js
++++ b/node_modules/react-native/jest/mockComponent.js
+@@ -39,6 +39,7 @@ export default function mockComponent<
+     React.ElementProps<typeof RealComponent>,
+   > =
+     typeof RealComponent === 'function' &&
++    RealComponent.prototype &&
+     RealComponent.prototype.constructor instanceof React.Component
+       ? RealComponent
+       : React.Component;

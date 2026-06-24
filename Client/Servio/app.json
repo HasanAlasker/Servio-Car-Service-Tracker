@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "Servio",
+    "slug": "Servio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/adaptive.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0059FF",
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "width": 200
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hasan-alasker.Servio"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive.png",
+        "backgroundColor": "#007bffff"
+      },
+      "package": "com.hasan-alasker.Servio",
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "POST_NOTIFICATIONS",
+        "RECEIVE_BOOT_COMPLETED",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "blockedPermissions": [
+        "RECORD_AUDIO",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/adaptive.png"
+    },
+    "plugins": [
+      "expo-notifications",
+      "react-native-edge-to-edge",
+      "@react-native-community/datetimepicker"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bba45793-f511-4f58-be49-7e5320905842"
+      }
+    }
+  }
+}
