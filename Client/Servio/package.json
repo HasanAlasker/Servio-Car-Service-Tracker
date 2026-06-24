@@ -48,7 +48,7 @@
     "react-native-gifted-charts": "^1.4.76",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-onboarding-swiper": "^1.4.0",
-    "react-native-reanimated": "^4.3.0",
+    "react-native-reanimated": "^4.1.7",
     "react-native-safe-area-context": "^5.6.2",
     "react-native-screens": "~4.16.0",
     "react-native-svg": "^15.12.1",
