@@ -16,7 +16,7 @@ describe("ServiceCalculator", () => {
       };
 
       const result = calculateNextService(part, 14000);
-      expect(result.partId).toBe("p1");
+      expect(result.cd. cdpartId).toBe("p1");
       expect(result.partName).toBe("Oil Filter");
       expect(result.nextServiceMileage).toBeNull();
       

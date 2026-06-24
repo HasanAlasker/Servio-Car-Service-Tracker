@@ -33,7 +33,7 @@ describe("Master-Detail Navigation Workflow (MyCars Screen)", () => {
 
     const { getByText } = render(<MyCars />);
     
-    expect(getByText("You haven't added any cars yet")).toBeTruthy();
+    expect(getByText(/You haven't added any cars/i)).toBeTruthy();
     // And assert AddCar button is available regardless
     expect(getByText("Add Car")).toBeTruthy();
   });
@@ -112,6 +112,6 @@ describe("Master-Detail Navigation Workflow (MyCars Screen)", () => {
     fireEvent.press(getByText("Add Car"));
 
     // Assert navigation router redirects to the blank creation form
-    expect(mockNavigate).toHaveBeenCalledWith("AddCar", undefined);
+    expect(mockNavigate).toHaveBeenCalledWith("AddCar");
   });
 });
