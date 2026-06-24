@@ -112,12 +112,12 @@ function MakeAppointment(props) {
       ) {
         toast.error("Time has passed");
       } else {
+        toast.error("Car has appointment in this time");
         setErr("This car has another appointment in this time");
-        console.log(response);
       }
     } catch (error) {
-      console.log(error);
-      setErr("An error occurred. Please try again.");
+      toast.error("Car has an appointment at this time");
+      setErr("Try a different time");
     } finally {
       setIsSubmitting(false);
     }
@@ -163,8 +163,10 @@ function MakeAppointment(props) {
                     const [date] = selectedDate.toISOString().split("T");
                     fetchSlots(params.shop.id, date);
                     setFrom(null);
+                    setErr(null);
                   }}
                 />
+                {err && <ErrorMessage error={err} />}
 
                 {loading && <LoadingSkeleton short />}
                 {values.date && !slots.isOpen && !loading && (
@@ -185,8 +187,6 @@ function MakeAppointment(props) {
                   style={{ display: "none" }}
                   submitRef={submitRef}
                 />
-
-                {err && <ErrorMessage error={err} />}
               </GapContainer>
             )}
           </AppForm>

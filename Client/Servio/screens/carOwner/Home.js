@@ -11,6 +11,7 @@ import { useState } from "react";
 import { UseAppointment } from "../../context/AppointmentContext";
 import { UseService } from "../../context/ServiceContext";
 import { Platform } from "react-native";
+import EmptyState from "../../components/general/EmptyState";
 
 function Home(props) {
   const { loadCars, cars, loading } = UseCar();
@@ -38,7 +39,14 @@ function Home(props) {
           <HelloUser />
           {cars.length > 0 && <UsersDash />}
           {cars.length === 0 && !loading && (
-            <EmptyGarage title={"Track your car’s health effortlessly"} text={"It won't take 30 seconds"} />
+            <EmptyState
+              text={"Takes less than 30 seconds to get started"}
+              lottie={require("../../assets/animations/car.json")}
+              loop
+              animationHeight={170}
+              action
+              navigateTo={'AddCar'}
+            />
           )}
         </GapContainer>
       </ScrollScreen>

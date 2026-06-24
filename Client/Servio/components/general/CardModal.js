@@ -20,6 +20,7 @@ const getStyles = (theme) =>
   StyleSheet.create({
     container: {
       width: "90%",
+      maxWidth:600,
       margin: "auto",
 
       backgroundColor: theme.post,

@@ -9,6 +9,7 @@ import CarCard from "../../components/cards/CarCard";
 import { UseCar } from "../../context/CarContext";
 import { useState } from "react";
 import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import EmptyState from "../../components/general/EmptyState";
 
 function MyCars(props) {
   const { cars, loading, loadCars } = UseCar();
@@ -45,25 +46,28 @@ function MyCars(props) {
       >
         <GapContainer>
           {carsList.length === 0 && !loading ? (
-            <SText
-              thin
-              color={"sec_text"}
-              style={{ marginHorizontal: "auto", textAlign: "center" }}
-            >
-              You haven't added any cars yet
-            </SText>
+            <EmptyState
+              text={"You haven't added any cars"}
+              lottie={require("../../assets/animations/car.json")}
+              loop
+              animationHeight={170}
+              action
+              navigateTo={"AddCar"}
+            />
           ) : (
             carsList
           )}
 
           {loading && <LoadingSkeleton />}
 
-          <AddCarCard
-            text={"Add Car"}
-            icon={"plus"}
-            color={"blue"}
-            navigateTo={"AddCar"}
-          />
+          {carsList.length !== 0 && !loading && (
+            <AddCarCard
+              text={"Add Car"}
+              icon={"plus"}
+              color={"blue"}
+              navigateTo={"AddCar"}
+            />
+          )}
         </GapContainer>
       </ScrollScreen>
       <Navbar />

@@ -13,7 +13,7 @@ function QuickActions(props) {
   const { isDarkMode, toggleTheme } = useTheme();
 
   const handlePress = async () => {
-    if (!userLocation) await fetchUserLocation();
+    await fetchUserLocation();
   };
 
   const RenderedActions = () => {

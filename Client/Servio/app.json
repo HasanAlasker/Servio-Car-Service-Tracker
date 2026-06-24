@@ -14,15 +14,15 @@
       "width": 200
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.hasan-alasker.Servio"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive.png",
         "backgroundColor": "#007bffff"
       },
-      "package": "com.hasan-alasker.Servio",
+      "package": "com.hasan_alasker.Servio",
+      "googleServicesFile": "./google-services.json",
       "edgeToEdgeEnabled": true,
       "permissions": [
         "CAMERA",
@@ -41,11 +41,7 @@
     "web": {
       "favicon": "./assets/adaptive.png"
     },
-    "plugins": [
-      "expo-notifications",
-      "react-native-edge-to-edge",
-      "@react-native-community/datetimepicker"
-    ],
+    "plugins": ["expo-notifications", "react-native-edge-to-edge"],
     "extra": {
       "eas": {
         "projectId": "bba45793-f511-4f58-be49-7e5320905842"

@@ -16,6 +16,7 @@ import { UseUser } from "../../context/UserContext";
 import useApi from "../../hooks/useApi";
 import { getCallToAction } from "../../api/appointment";
 import { useBookingStore } from "../../store/shopOwner/useBookingsStore";
+import EmptyState from "../../components/general/EmptyState";
 
 function CompletedAppointmets(props) {
   const { isUser, isShopOwner } = UseUser();
@@ -78,13 +79,11 @@ function CompletedAppointmets(props) {
         />
       ))
     ) : (
-      <SText
-        thin
-        color={"sec_text"}
-        style={{ marginHorizontal: "auto", textAlign: "center" }}
-      >
-        You're all caught up!
-      </SText>
+      <EmptyState
+        text={"You're all caught up"}
+        lottie={require("../../assets/animations/bell.json")}
+        animationHeight={130}
+      />
     );
 
   return (

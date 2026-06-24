@@ -75,6 +75,7 @@ export const UserProvider = ({ children }) => {
     ONBOARDED: "@servio_onboarded",
     PARTNOTE: "@servio_part_note",
     SERVICENOTE: "@servio_service_note",
+    LOCATION: "@servio_location",
   };
 
   const onBoardUser = async () => {
@@ -124,6 +125,10 @@ export const UserProvider = ({ children }) => {
       }
 
       setUserLocation(location);
+      await AsyncStorage.setItem(
+        STORAGE_KEYS.LOCATION,
+        JSON.stringify(location),
+      ); 
 
       // console.log(location);
     } catch (e) {
@@ -193,10 +198,12 @@ export const UserProvider = ({ children }) => {
       const loadedServiceNote = await AsyncStorage.getItem(
         STORAGE_KEYS.SERVICENOTE,
       );
+      const loadedLocation = await AsyncStorage.getItem(STORAGE_KEYS.LOCATION);
 
       if (loadedOnBoarded === "true") setOnBoarded(true);
       if (loadedPartNote === "false") setPartNote(false);
       if (loadedServiceNote === "false") setServiceNote(false);
+      if (loadedLocation) setUserLocation(JSON.parse(loadedLocation));
 
       if (loadedUser && loadedToken) {
         const parsedUser = JSON.parse(loadedUser);
@@ -544,7 +551,7 @@ export const UserProvider = ({ children }) => {
     fetchUserLocation,
     showServiceNote,
     showPartNote,
-    hideNote
+    hideNote,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

@@ -12,6 +12,7 @@ import SText from "../../components/text/SText";
 import { UseAppointment } from "../../context/AppointmentContext";
 import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
 import useAppToast from "../../hooks/useAppToast";
+import EmptyState from "../../components/general/EmptyState";
 
 function Bookings(props) {
   const toast = useAppToast();
@@ -65,38 +66,24 @@ function Bookings(props) {
     }
   };
 
-  const RenderAppointments =
-    activeTab === "1"
-      ? upcoming.map((appointment) => (
-          <AppointmentCard
-            key={appointment._id}
-            id={appointment._id}
-            customer={appointment?.customer}
-            car={appointment.car}
-            shop={appointment.shop}
-            serviceParts={appointment.serviceParts}
-            status={appointment.status}
-            scheuledAt={appointment.scheduledDate}
-            type={"1"}
-            onCancel={handleCancel}
-          />
-        ))
-      : past.map((appointment) => (
-          <AppointmentCard
-            key={appointment._id}
-            id={appointment._id}
-            customer={appointment?.customer}
-            car={appointment.car}
-            shop={appointment.shop}
-            serviceParts={appointment.serviceParts}
-            status={appointment.status}
-            scheuledAt={appointment.scheduledDate}
-            type={"2"}
-            onCancel={handleCancel}
-            showDelete
-            onDelete={handleDelete}
-          />
-        ));
+  const dataSource = activeTab === "1" ? upcoming : past;
+
+  const RenderAppointments = dataSource.map((appointment) => (
+    <AppointmentCard
+      key={appointment._id}
+      id={appointment._id}
+      customer={appointment?.customer}
+      car={appointment.car}
+      shop={appointment.shop}
+      serviceParts={appointment.serviceParts}
+      status={appointment.status}
+      scheuledAt={appointment.scheduledDate}
+      type={activeTab}
+      onCancel={handleCancel}
+      showDelete={activeTab === "2"}
+      onDelete={handleDelete}
+    />
+  ));
 
   const onTabChange = () => {
     let changeTo = activeTab === "1" ? "2" : "1";
@@ -118,13 +105,14 @@ function Bookings(props) {
         />
         <GapContainer>
           {RenderAppointments.length === 0 && !loading ? (
-            <SText
-              thin
-              color={"sec_text"}
-              style={{ margin: "auto", textAlign: "center" }}
-            >
-              You haven't booked any appointments yet
-            </SText>
+            <EmptyState
+              text={"No bookings here"}
+              lottie={require("../../assets/animations/calendar.json")}
+              loop
+              animationHeight={150}
+              moveTextUp={5}
+              lottieStyle={{left:6}}
+            />
           ) : (
             RenderAppointments
           )}

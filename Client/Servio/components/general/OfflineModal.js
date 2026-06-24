@@ -77,6 +77,7 @@ const getStyles = (theme) =>
       paddingTop: 40,
       paddingBottom: 30,
       width: "70%",
+      maxWidth:600,
       paddingHorizontal: 20,
       borderRadius: 20,
     },

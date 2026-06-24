@@ -1,7 +1,6 @@
 import { View, StyleSheet, Dimensions, Animated, Platform } from "react-native";
 import { useRef, useEffect } from "react";
 import LottieView from "../../components/onboarding/LottieView";
-// import LottieView from "lottie-react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "../../context/ThemeContext";

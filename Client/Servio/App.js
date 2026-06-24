@@ -172,7 +172,6 @@ const AppNavigator = () => {
     isAdmin,
     isAuthenticated,
     loadUserData,
-    fetchUserLocation,
     user,
     onBoarded,
   } = UseUser();
@@ -191,7 +190,6 @@ const AppNavigator = () => {
     loadCars();
     loadServices();
     loadAppointments();
-    fetchUserLocation();
   }, []);
 
   useEffect(() => {

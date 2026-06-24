@@ -11,7 +11,7 @@ import { useState } from "react";
 import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
 import InfoCard from "../../components/cards/InfoCard";
 import { UseUser } from "../../context/UserContext";
-
+import EmptyState from "../../components/general/EmptyState";
 
 function Service(props) {
   const { showServiceNote, hideNote } = UseUser();
@@ -68,19 +68,17 @@ function Service(props) {
       >
         <GapContainer>
           {RenderServices.length === 0 && !loading ? (
-            <SText
-              thin
-              color={"sec_text"}
-              style={{ marginHorizontal: "auto", textAlign: "center" }}
-            >
-              You don't have any upcoming services
-            </SText>
+            <EmptyState
+              text={"No upcoming services"}
+              lottie={require("../../assets/animations/all-set.json")}
+              moveTextUp={50}
+            />
           ) : (
             RenderServices
           )}
           {loading && <LoadingSkeleton />}
           {loading && <LoadingSkeleton />}
-          {RenderServices.length !== 0 && showServiceNote && (
+          {showServiceNote && RenderServices.length !== 0 && (
             <InfoCard
               title={"Completed a service?"}
               text={'Press "Fixed" on the parts to recalculate.'}
