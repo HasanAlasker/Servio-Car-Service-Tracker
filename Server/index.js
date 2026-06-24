@@ -38,12 +38,14 @@ if (!process.env.JWT_SECRET) {
   console.log("fatal error, no jwt defined");
 }
 
-mongoose
-  .connect(process.env.DATABASE_URL)
-  .then(() => console.log("Connected to mongoDB... ✅"))
-  .catch((err) =>
-    console.log("Error connecting to mongoDB... ❌", err.message),
-  );
+if (process.env.NODE_ENV !== "test") {
+  mongoose
+    .connect(process.env.DATABASE_URL)
+    .then(() => console.log("Connected to mongoDB... ✅"))
+    .catch((err) =>
+      console.log("Error connecting to mongoDB... ❌", err.message),
+    );
+}
 
 app.use(express.json());
 app.use(globalLimit);
@@ -60,12 +62,14 @@ app.use("/api/slots", slots);
 app.use("/api/earlyAccess", earlyAccess);
 // await seedDatabase()
 
-startServiceScheduler();
-console.log("Service scheduler started 📆");
+if (process.env.NODE_ENV !== "test") {
+  startServiceScheduler();
+  console.log("Service scheduler started 📆");
 
-app.listen(port, () => {
-  console.log(`Server running on ${port} 🌍`);
-  console.log(`Accessible at http://YOUR_IP:${port} 🖥️`);
-});
+  app.listen(port, () => {
+    console.log(`Server running on ${port} 🌍`);
+    console.log(`Accessible at http://YOUR_IP:${port} 🖥️`);
+  });
+}
 
 export default app;
