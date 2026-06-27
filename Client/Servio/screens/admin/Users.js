@@ -1,10 +1,6 @@
-import { StyleSheet } from "react-native";
-import SafeScreen from "../../components/general/SafeScreen";
-import ScrollScreen from "../../components/general/ScrollScreen";
-import Navbar from "../../components/general/Navbar";
-import TabNav from "../../components/general/TabNav";
 import { useEffect, useState } from "react";
-import useApi from "../../hooks/useApi";
+import { StyleSheet } from "react-native";
+import { alert } from "react-native-alert-queue";
 import {
   deleteUser,
   getAllUsers,
@@ -13,10 +9,14 @@ import {
 } from "../../api/user";
 import UserCard from "../../components/cards/UserCard";
 import GapContainer from "../../components/general/GapContainer";
-import SText from "../../components/text/SText";
-import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
-import { alert } from "react-native-alert-queue";
+import Navbar from "../../components/general/Navbar";
+import SafeScreen from "../../components/general/SafeScreen";
+import ScrollScreen from "../../components/general/ScrollScreen";
 import SearchBar from "../../components/general/SearchBar";
+import TabNav from "../../components/general/TabNav";
+import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import SText from "../../components/text/SText";
+import useApi from "../../hooks/useApi";
 
 function Users(props) {
   const [tab, setTab] = useState("1");
