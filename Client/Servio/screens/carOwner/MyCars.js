@@ -1,15 +1,14 @@
-import { Platform, StyleSheet } from "react-native";
-import SafeScreen from "../../components/general/SafeScreen";
-import Navbar from "../../components/general/Navbar";
-import ScrollScreen from "../../components/general/ScrollScreen";
-import AddCarCard from "../../components/cards/AddCarCard";
-import GapContainer from "../../components/general/GapContainer";
-import SText from "../../components/text/SText";
-import CarCard from "../../components/cards/CarCard";
-import { UseCar } from "../../context/CarContext";
 import { useState } from "react";
-import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import { Platform, StyleSheet } from "react-native";
+import AddCarCard from "../../components/cards/AddCarCard";
+import CarCard from "../../components/cards/CarCard";
 import EmptyState from "../../components/general/EmptyState";
+import GapContainer from "../../components/general/GapContainer";
+import Navbar from "../../components/general/Navbar";
+import SafeScreen from "../../components/general/SafeScreen";
+import ScrollScreen from "../../components/general/ScrollScreen";
+import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import { UseCar } from "../../context/CarContext";
 
 function MyCars(props) {
   const { cars, loading, loadCars } = UseCar();

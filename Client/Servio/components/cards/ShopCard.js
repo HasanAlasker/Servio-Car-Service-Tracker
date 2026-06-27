@@ -1,28 +1,30 @@
-import { View, StyleSheet, Image } from "react-native";
-import CardComp from "./CardComp";
-import MText from "../text/MText";
-import SText from "../text/SText";
-import { capFirstLetter } from "../../functions/CapFirstLetterOfWord";
+import { Feather, Octicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import GapContainer from "../general/GapContainer";
-import CardLeftBorder from "./CardLeftBorder";
-import PriBtn from "../general/PriBtn";
 import { useEffect, useState } from "react";
+import { Image, StyleSheet, View } from "react-native";
+import { useTheme } from "../../context/ThemeContext";
+import { UseUser } from "../../context/UserContext";
+import { capFirstLetter } from "../../functions/CapFirstLetterOfWord";
 import {
   formatDayRange,
   formatOpenDays,
 } from "../../functions/formatOpenHours";
-import { useTheme } from "../../context/ThemeContext";
-import RowCont from "../general/RowCont";
-import { Feather, Octicons } from "@expo/vector-icons";
-import { UseUser } from "../../context/UserContext";
-import SimpleTitleText from "../general/SimpleTitleText";
 import useThemedStyles from "../../hooks/useThemedStyles";
-import TText from "../text/TText";
 import { useShopStore } from "../../store/admin/useShopStore";
+import GapContainer from "../general/GapContainer";
 import GhostBtn from "../general/GhostBtn";
+import PriBtn from "../general/PriBtn";
+import RowCont from "../general/RowCont";
 import SeparatorComp from "../general/SeparatorComp";
+import SimpleTitleText from "../general/SimpleTitleText";
 import VerticalLine from "../general/VerticalLine";
+import MText from "../text/MText";
+import SText from "../text/SText";
+import TText from "../text/TText";
+import CardComp from "./CardComp";
+import CardLeftBorder from "./CardLeftBorder";
+import { alert } from "react-native-alert-queue";
+import useAppToast from "../../hooks/useAppToast";
 
 function ShopCard({
   id,
@@ -50,6 +52,7 @@ function ShopCard({
   const { isShopOwner } = UseUser();
   const [showBtn, setShowBtn] = useState(false);
   const navigate = useNavigation();
+  const toast = useAppToast();
 
   const deleteShopA = useShopStore((state) => state.deleteShopA);
   const verifyShopA = useShopStore((state) => state.verifyShopA);
@@ -74,6 +77,15 @@ function ShopCard({
 
   const hadlePress = (type) => {
     onAction(type, id);
+  };
+
+  const handleDelete = async () => {
+    try {
+      const confimed = await alert.confirm();
+      if (confimed) deleteShopA(id, activeTab);
+    } catch (error) {
+      toast.error("Failed to delete");
+    }
   };
 
   const formatedDistance = (distance) => {
@@ -185,12 +197,7 @@ function ShopCard({
                   <VerticalLine />
                 )}
                 {!isDeleted && (
-                  <GhostBtn
-                    full
-                    title={"Delete"}
-                    onPress={() => deleteShopA(id, activeTab)}
-                    red
-                  />
+                  <GhostBtn full title={"Delete"} onPress={handleDelete} red />
                 )}
               </RowCont>
             </GapContainer>
