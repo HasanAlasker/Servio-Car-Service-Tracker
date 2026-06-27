@@ -65,6 +65,8 @@ function UsersProfiles(props) {
       rating={shop.rating}
       ratingCount={shop.ratingCount}
       services={shop.services}
+      link={shop?.link}
+
       // isVerified={shop.isVerified}
       // isDeleted={shop.isDeleted}
     />

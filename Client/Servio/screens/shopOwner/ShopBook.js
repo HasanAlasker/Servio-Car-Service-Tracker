@@ -34,6 +34,7 @@ function ShopBook(props) {
         navigate.navigate("ShopAppointments", { shopId: shop._id })
       }
       mini
+      link={shop?.link}
     />
   ));
   return (

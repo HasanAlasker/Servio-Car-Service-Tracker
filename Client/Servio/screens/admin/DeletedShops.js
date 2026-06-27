@@ -43,6 +43,7 @@ function DeletedShops(props) {
       services={shop.services}
       isVerified={shop.isVerified}
       isDeleted={shop.isDeleted}
+      link={shop?.link}
     />
   ));
 

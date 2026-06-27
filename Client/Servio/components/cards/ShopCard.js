@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Pressable } from "react-native";
 import CardComp from "./CardComp";
 import MText from "../text/MText";
 import SText from "../text/SText";
@@ -23,6 +23,7 @@ import { useShopStore } from "../../store/admin/useShopStore";
 import GhostBtn from "../general/GhostBtn";
 import SeparatorComp from "../general/SeparatorComp";
 import VerticalLine from "../general/VerticalLine";
+import { openURL } from "../../functions/openURL";
 
 function ShopCard({
   id,
@@ -31,6 +32,7 @@ function ShopCard({
   description,
   services,
   address,
+  link,
   openHours,
   rating,
   ratingCount,
@@ -131,10 +133,12 @@ function ShopCard({
 
           {!mini && (
             <GapContainer gap={15}>
-              <SimpleTitleText
-                title={capFirstLetter(address.city)}
-                text1={capFirstLetter(address.area + " " + address.street)}
-              />
+              <Pressable onPress={() => openURL(link)}>
+                <SimpleTitleText
+                  title={capFirstLetter(address.city)}
+                  text1={capFirstLetter(address.area + " " + address.street)}
+                />
+              </Pressable>
 
               {!mini && (
                 <CardLeftBorder

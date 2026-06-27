@@ -72,6 +72,7 @@ function Shops(props) {
           isVerified={shop.isVerified}
           isDeleted={shop.isDeleted}
           activeTab={tab}
+          link={shop?.link}
         />
       ))
     ) : (

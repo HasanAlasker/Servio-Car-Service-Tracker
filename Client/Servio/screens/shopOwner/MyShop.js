@@ -25,6 +25,7 @@ function MyShop(props) {
       ratingCount={shop.ratingCount}
       services={shop.services}
       onCardPress={() => navigate.navigate("AddShop", shop)}
+      link={shop?.link}
     />
   ));
 

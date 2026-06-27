@@ -79,6 +79,7 @@ function Shops(props) {
           services={shop.services}
           serviceData={params}
           distance={shop.distance}
+          link={shop?.link}
         />
       ))
     ) : (
